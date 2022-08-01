@@ -19,13 +19,18 @@ Luego abre el archivo main.dart y presiona F5 o fn + F5 app. 
 
 ## Descripción
 
-###La app contiene alguno de estos puntos:
+### La app contiene alguno de estos puntos:
 
 -Abrir la cámara y leer un código QR
+
 -Guardar en SQLite la información del QR
+
 -CRUD hacia SQLite 
+
 -Cargar mapas segun coordenadas dadas
+
 -Agregar marcadores en el mapa
+
 -Abrir URLs en el navegador
 
 
