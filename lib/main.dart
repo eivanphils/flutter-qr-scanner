@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_qr_scanner/screens/screens.dart';
+import 'package:flutter_qr_scanner/theme/app_theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         'home': (_) => const HomeScreen(),
         'mapa': (_) => const MapaScreen()
       },
+      theme: AppTheme.lightTheme,
     );
   }
 }
