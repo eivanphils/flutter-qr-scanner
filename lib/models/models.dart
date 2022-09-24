@@ -1,0 +1,1 @@
+export 'package:flutter_qr_scanner/models/scan_model.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_qr_scanner/models/scan_model.dart';
 
 import 'package:provider/provider.dart';
 
@@ -37,7 +38,8 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
 
     // TODO: leer la base de datos
-    DBProvider.db.database;
+    final tempScan = ScanModel(value: 'web:http://wadadsd');
+    DBProvider.db.newScan(tempScan);
 
     const List<Widget> tabs = [MapsScreen(), AddressScreen()];
 

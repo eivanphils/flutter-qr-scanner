@@ -1,37 +1,41 @@
 import 'dart:convert';
 
-List<Welcome> welcomeFromJson(String str) =>
-    List<Welcome>.from(json.decode(str).map((x) => Welcome.fromJson(x)));
+List<ScanModel> ScanModelFromJson(String str) =>
+    List<ScanModel>.from(json.decode(str).map((x) => ScanModel.fromJson(x)));
 
-String welcomeToJson(List<Welcome> data) =>
+String ScanModelToJson(List<ScanModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Welcome {
-  Welcome({
-    required this.id,
-    required this.type,
+class ScanModel {
+  ScanModel({
+    this.id,
+    this.type,
     required this.value,
   }) {
-    if (value.contains(_types[value].toString())) {
-      type = _types[value].toString();
-    } else {
-      type = 'default';
-    }
+    final splitValue = value.split(':');
+
+    type = 'default';
+
+    _types.forEach((key, value) {
+      if (key == splitValue[0]) {
+        type = value;
+      }
+    });
   }
 
-  int id;
-  String type;
+  int? id;
+  String? type;
   String value;
 
   final Map<String, String> _types = {
-    'web:': 'web',
-    'geo:': 'geo',
-    'video:': 'youtube',
+    'web': 'web',
+    'geo': 'geo',
+    'video': 'youtube',
     'img': 'image',
     'txt': 'text'
   };
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory ScanModel.fromJson(Map<String, dynamic> json) => ScanModel(
         id: json["id"],
         type: json["type"],
         value: json["value"],
