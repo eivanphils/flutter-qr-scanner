@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:flutter_qr_scanner/screens/screens.dart';
+import 'package:flutter_qr_scanner/providers/db_provider.dart';
 import 'package:flutter_qr_scanner/providers/ui_provider.dart';
+
+import 'package:flutter_qr_scanner/screens/screens.dart';
 import 'package:flutter_qr_scanner/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,6 +35,9 @@ class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
+
+    // TODO: leer la base de datos
+    DBProvider.db.database;
 
     const List<Widget> tabs = [MapsScreen(), AddressScreen()];
 
