@@ -24,8 +24,6 @@ class DBProvider {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, 'ScansDB.db');
 
-    print(path);
-
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute('''
@@ -54,7 +52,31 @@ class DBProvider {
   Future<int> newScan(ScanModel scanData) async {
     final db = await database;
     final res = await db!.insert('Scans', scanData.toJson());
-    print(res);
     return res;
+  }
+
+  Future<ScanModel?> getScanById(int id) async {
+    final db = await database;
+    final res = await db!.query('Scans', where: 'id = ?', whereArgs: [id]);
+
+    return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;
+  }
+
+  Future<List<ScanModel>> getScanByType(String type) async {
+    final db = await database;
+    final res = await db!.query('Scans', where: 'type = ?', whereArgs: [type]);
+
+    return res.isNotEmpty
+          ? res.map((s) => ScanModel.fromJson(s)).toList()
+          : [];
+  }
+
+  Future<List<ScanModel>> getAllScans() async {
+    final db = await database;
+    final res = await db!.query('Scans');
+
+    return res.isNotEmpty 
+          ? res.map((s) => ScanModel.fromJson(s)).toList()
+          : [];
   }
 }
