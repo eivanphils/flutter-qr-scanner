@@ -24,6 +24,7 @@ class DBProvider {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, 'ScansDB.db');
 
+    print(path);
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute('''
@@ -66,17 +67,35 @@ class DBProvider {
     final db = await database;
     final res = await db!.query('Scans', where: 'type = ?', whereArgs: [type]);
 
-    return res.isNotEmpty
-          ? res.map((s) => ScanModel.fromJson(s)).toList()
-          : [];
+    return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
   }
 
   Future<List<ScanModel>> getAllScans() async {
     final db = await database;
     final res = await db!.query('Scans');
 
-    return res.isNotEmpty 
-          ? res.map((s) => ScanModel.fromJson(s)).toList()
-          : [];
+    return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
+  }
+
+  Future<int> updateScan(ScanModel scanData) async {
+    final db = await database;
+    final res = await db!.update('Scans', scanData.toJson(),
+        where: 'id = ?', whereArgs: [scanData.id]);
+
+    return res;
+  }
+
+  Future<int> deleteScan(int id) async {
+    final db = await database;
+    final res = await db!.delete('Scans', where: 'id = ?', whereArgs: [id]);
+    return res;
+  }
+
+  Future<int> deleteAllScan() async {
+    final db = await database;
+    final res = await db!.rawDelete('''
+      DELETE FROM Scans
+    ''');
+    return res;
   }
 }

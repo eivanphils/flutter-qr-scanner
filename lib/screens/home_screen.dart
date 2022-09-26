@@ -38,15 +38,17 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
 
     // TODO: leer la base de datos
-    // final tempScan = ScanModel(value: 'web:http://wadadsd');
-    // DBProvider.db.newScan(tempScan);
-    DBProvider.db.getScanById(3).then((res) {
-      print(res!.value);
-      print(res.type);
-    });
+    final tempScan = ScanModel(value: 'web:http://wadadsd');
+    DBProvider.db.newScan(tempScan);
+    // DBProvider.db.getScanById(3).then((res) {
+    //   print(res!.value);
+    //   print(res.type);
+    // });
 
-    DBProvider.db.getAllScans().then(print);
-    DBProvider.db.getScanByType('web').then((print));
+    // DBProvider.db.getAllScans().then(print);
+    // DBProvider.db.getScanByType('web').then((print));
+
+    // DBProvider.db.deleteAllScan();
 
     const List<Widget> tabs = [MapsScreen(), AddressScreen()];
 
