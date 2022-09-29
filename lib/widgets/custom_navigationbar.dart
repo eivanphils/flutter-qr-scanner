@@ -21,19 +21,19 @@ class CustomNavigationBar extends StatelessWidget {
           label: 'Mapa'
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.wifi_rounded),
+          icon: Icon(Icons.image),
           label: 'Imagen'
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.wifi_rounded),
+          icon: Icon(Icons.web),
           label: 'Web'
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.wifi_rounded),
+          icon: Icon(Icons.smart_display),
           label: 'Youtube'
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.wifi_rounded),
+          icon: Icon(Icons.text_format),
           label: 'Texto'
         ),
       ]

@@ -14,14 +14,14 @@ class MapsScreen extends StatelessWidget {
     return ListView.builder(
         itemCount: scans.length,
         itemBuilder: (_, int i) {
-          final scanData = scanListProvider.scans[i];
+          final scan = scans[i];
           return ListTile(
             leading: const Icon(Icons.map),
-            title: Text(scanData.value),
-            subtitle: Text('id: ${scanData.id}'),
+            title: Text(scan.value),
+            subtitle: Text('id: ${scan.id}'),
             trailing:
                 const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
-            onTap: () => print('click ${scanData.id}'),
+            onTap: () => print('click ${scan.id}'),
           );
         });
   }

@@ -35,15 +35,17 @@ class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
-    final scanListProvider = Provider.of<ScanListProvider>(context);
+    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
 
     const List<String> tabs = ['geo', 'img', 'web', 'video', 'text'];
+    const List<IconData> icons = [Icons.map_rounded, Icons.image, Icons.web, Icons.smart_display, Icons.text_format];
+  
     final indexTab = uiProvider.selectedMenuOpt;
 
     scanListProvider.loadScansByType(tabs[indexTab]);
 
     return uiProvider.selectedMenuOpt == 0
         ? const MapsScreen()
-        : const AddressScreen();
+        : AddressScreen(icon: icons[indexTab]);
   }
 }
