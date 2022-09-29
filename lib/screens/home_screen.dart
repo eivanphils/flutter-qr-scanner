@@ -13,12 +13,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         title: const Text('Historial'),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.delete_forever))
+          IconButton(
+              onPressed: () => scanListProvider.deleteAllScans(),
+              icon: const Icon(Icons.delete_forever))
         ],
       ),
       body: const _HomePageBody(),
@@ -35,11 +40,18 @@ class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
-    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
 
     const List<String> tabs = ['geo', 'img', 'web', 'video', 'text'];
-    const List<IconData> icons = [Icons.map_rounded, Icons.image, Icons.web, Icons.smart_display, Icons.text_format];
-  
+    const List<IconData> icons = [
+      Icons.map_rounded,
+      Icons.image,
+      Icons.web,
+      Icons.smart_display,
+      Icons.text_format
+    ];
+
     final indexTab = uiProvider.selectedMenuOpt;
 
     scanListProvider.loadScansByType(tabs[indexTab]);
