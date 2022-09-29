@@ -20,6 +20,11 @@ class AppTheme {
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: deepPurple,
       unselectedItemColor: deepPurple.shade200
-    )
+    ),
+
+    // ListTileTheme
+    listTileTheme: const ListTileThemeData(
+      iconColor: deepPurple
+    ),
   );
 }
