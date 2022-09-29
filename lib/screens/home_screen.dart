@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_qr_scanner/models/scan_model.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:flutter_qr_scanner/providers/db_provider.dart';
+import 'package:flutter_qr_scanner/providers/scan_list_provider.dart';
 import 'package:flutter_qr_scanner/providers/ui_provider.dart';
 
 import 'package:flutter_qr_scanner/screens/screens.dart';
@@ -24,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: const _HomePageBody(),
       floatingActionButton: const ScanButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: const CustomNavigationBar(),
     );
   }
@@ -36,22 +35,15 @@ class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
+    final scanListProvider = Provider.of<ScanListProvider>(context);
 
-    // TODO: leer la base de datos
-    // final tempScan = ScanModel(value: 'web:http://wadadsd');
-    // DBProvider.db.newScan(tempScan);
-    // DBProvider.db.getScanById(3).then((res) {
-    //   print(res!.value);
-    //   print(res.type);
-    // });
+    const List<String> tabs = ['geo', 'img', 'web', 'video', 'text'];
+    final indexTab = uiProvider.selectedMenuOpt;
 
-    // DBProvider.db.getAllScans().then(print);
-    // DBProvider.db.getScanByType('web').then((print));
+    scanListProvider.loadScansByType(tabs[indexTab]);
 
-    // DBProvider.db.deleteAllScan();
-
-    const List<Widget> tabs = [MapsScreen(), AddressScreen()];
-
-    return tabs[uiProvider.selectedMenuOpt];
+    return uiProvider.selectedMenuOpt == 0
+        ? const MapsScreen()
+        : const AddressScreen();
   }
 }

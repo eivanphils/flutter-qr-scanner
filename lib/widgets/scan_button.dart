@@ -10,14 +10,13 @@ class ScanButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scanListProvider = Provider.of<ScanListProvider>(context);
+    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
     return FloatingActionButton(
         elevation: 0,
         child: const Icon(Icons.qr_code),
         onPressed: () async {
           String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
               '#3D8BEF', 'Cancelar', false, ScanMode.QR);
-          print(barcodeScanRes);
           scanListProvider.newScan(barcodeScanRes);
         });
   }

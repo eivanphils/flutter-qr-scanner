@@ -14,7 +14,7 @@ class ScanModel {
   }) {
     final splitValue = value.split(':');
 
-    type = 'default';
+    type = 'text';
 
     _types.forEach((key, value) {
       if (key == splitValue[0]) {

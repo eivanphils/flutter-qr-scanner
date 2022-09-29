@@ -22,7 +22,19 @@ class CustomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.wifi_rounded),
-          label: 'Direcciones'
+          label: 'Imagen'
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.wifi_rounded),
+          label: 'Web'
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.wifi_rounded),
+          label: 'Youtube'
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.wifi_rounded),
+          label: 'Texto'
         ),
       ]
     );
