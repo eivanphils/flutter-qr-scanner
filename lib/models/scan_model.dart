@@ -21,6 +21,10 @@ class ScanModel {
         type = value;
       }
     });
+
+    if (splitValue.length > 1) {
+      value = splitValue[1];
+    }
   }
 
   int? id;
