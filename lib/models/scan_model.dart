@@ -34,8 +34,8 @@ class ScanModel {
   final Map<String, String> _types = {
     'web': 'web',
     'geo': 'geo',
-    'video': 'youtube',
-    'img': 'image',
+    'video': 'video',
+    'img': 'img',
     'txt': 'text'
   };
 
