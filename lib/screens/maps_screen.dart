@@ -1,28 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
-
-import 'package:flutter_qr_scanner/providers/scan_list_provider.dart';
+import 'package:flutter_qr_scanner/widgets/widgets.dart';
 
 class MapsScreen extends StatelessWidget {
   const MapsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final scanListProvider = Provider.of<ScanListProvider>(context);
-    final scans = scanListProvider.scans;
-    return ListView.builder(
-        itemCount: scans.length,
-        itemBuilder: (_, int i) {
-          final scan = scans[i];
-          return ListTile(
-            leading: const Icon(Icons.map),
-            title: Text(scan.value),
-            subtitle: Text('id: ${scan.id}'),
-            trailing:
-                const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
-            onTap: () => print('click ${scan.id}'),
-          );
-        });
+    return const ScanList(icon: Icons.map);
   }
 }
