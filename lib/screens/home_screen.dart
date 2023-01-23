@@ -57,7 +57,10 @@ class _HomePageBody extends StatelessWidget {
     scanListProvider.loadScansByType(tabs[indexTab]);
 
     return uiProvider.selectedMenuOpt == 0
-        ? const MapsScreen()
-        : AddressScreen(icon: icons[indexTab]);
+        ? MapsScreen(typeData: tabs[indexTab],)
+        : AddressScreen(
+          icon: icons[indexTab],
+          typeData: tabs[indexTab],
+        );
   }
 }

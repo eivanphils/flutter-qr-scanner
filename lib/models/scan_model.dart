@@ -16,6 +16,7 @@ class ScanModel {
 
     type = 'text';
 
+    //TODO: arreglar al obtener el tipo de scan, sin necesidad del prefijo
     _types.forEach((key, value) {
       if (key == splitValue[0]) {
         type = value;
