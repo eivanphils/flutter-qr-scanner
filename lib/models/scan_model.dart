@@ -14,12 +14,10 @@ class ScanModel {
   }) {
     final splitValue = value.split(':');
 
-    type = 'text';
 
-    //TODO: arreglar al obtener el tipo de scan, sin necesidad del prefijo
-    _types.forEach((key, value) {
-      if (key == splitValue[0]) {
-        type = value;
+    _types.forEach((format) {
+      if (format == splitValue[0]) {
+        type = format;
       }
     });
 
@@ -32,13 +30,7 @@ class ScanModel {
   String? type;
   String value;
 
-  final Map<String, String> _types = {
-    'web': 'web',
-    'geo': 'geo',
-    'video': 'video',
-    'img': 'img',
-    'txt': 'text'
-  };
+  final List<String> _types = ['web', 'geo', 'video', 'img', 'text'];
 
   factory ScanModel.fromJson(Map<String, dynamic> json) => ScanModel(
         id: json["id"],

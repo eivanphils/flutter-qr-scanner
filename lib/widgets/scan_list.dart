@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_qr_scanner/utils/utils.dart';
 
 import 'package:provider/provider.dart';
 
+import 'package:flutter_qr_scanner/utils/utils.dart';
 import 'package:flutter_qr_scanner/providers/scan_list_provider.dart';
 
 class ScanList extends StatelessWidget {
@@ -33,7 +33,7 @@ class ScanList extends StatelessWidget {
             child: ListTile(
                 leading: Icon(icon),
                 title: Text(scan.value),
-                subtitle: Text('id: ${scan.id}'),
+                subtitle: Text('id: ${scan.id} - type: ${scan.type}'),
                 trailing:
                     const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
                 onTap: () {
