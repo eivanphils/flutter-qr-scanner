@@ -37,12 +37,6 @@ class ScanList extends StatelessWidget {
                 trailing:
                     const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
                 onTap: () {
-                  // TODO: si typeData es img abrir modal y mostrar la imagen
-                  // TODO: si typeData es web mostrar la web
-                  // TODO: si typeData es txt mostrar el texto en un alert o otro elemento
-                  // TODO: si typeData es video mostrarlo en un modal
-                  // TODO: si typeData es geo mostral el mapa con las coordenadas
-                  print('click ${scan.id}');
                   launchScan(context, scan);
                 }),
           );

@@ -12,7 +12,7 @@ class ScanModel {
     this.type,
     required this.value,
   }) {
-    final splitValue = value.split(':');
+    final splitValue = value.split(':-');
 
 
     _types.forEach((format) {
