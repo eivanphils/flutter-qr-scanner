@@ -6,11 +6,9 @@ import 'package:flutter_qr_scanner/widgets/widgets.dart';
 import 'package:flutter_qr_scanner/models/scan_model.dart';
 
 Future<void> launchScan(BuildContext context, ScanModel scan) async {
-  if (scan.type == 'web') {
-    final url = 'https://${scan.value}';
-
+  if (scan.type == 'web' || scan.type == 'video') {
     if (!await launchUrlString(
-      url,
+      scan.value,
       mode: LaunchMode.inAppWebView,
     )) {
       throw Exception('Could not launch ${scan.value}');
@@ -32,8 +30,6 @@ Future<void> launchScan(BuildContext context, ScanModel scan) async {
     showMyDialog(context, 'Imagen', body);
   }
 
-  if (scan.type == 'video') {}
-
   if (scan.type == 'text') {
     final body = Text(scan.value);
     showMyDialog(context, 'Texto', body);
@@ -42,6 +38,4 @@ Future<void> launchScan(BuildContext context, ScanModel scan) async {
   if (scan.type == 'geo') {
     Navigator.pushNamed(context, 'mapa', arguments: scan);
   }
-
-  // TODO: si typeData es video mostrarlo en un modal
 }
