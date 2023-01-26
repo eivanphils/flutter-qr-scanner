@@ -25,6 +25,12 @@ class _MapScreenState extends State<MapScreen> {
       target: scan.getLatLng(),
       zoom: 18.5,
     );
+    Set<Marker> markers = <Marker>{};
+    markers.add(Marker(
+      markerId: const MarkerId('geo-position'),
+      position: scan.getLatLng()
+    ));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Coordenadas'),
@@ -32,6 +38,7 @@ class _MapScreenState extends State<MapScreen> {
       body: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: initialPosition,
+        markers: markers,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
