@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
 
-List<ScanModel> ScanModelFromJson(String str) =>
+List<ScanModel> scanModelFromJson(String str) =>
     List<ScanModel>.from(json.decode(str).map((x) => ScanModel.fromJson(x)));
 
-String ScanModelToJson(List<ScanModel> data) =>
+String scanModelToJson(List<ScanModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ScanModel {
@@ -17,11 +17,11 @@ class ScanModel {
     final splitValue = value.split(':-');
 
 
-    _types.forEach((format) {
+    for (var format in _types) {
       if (format == splitValue[0]) {
         type = format;
       }
-    });
+    }
 
     if (splitValue.length > 1) {
       value = splitValue[1];

@@ -14,7 +14,6 @@ class ScanList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('typeData $typeData');
 
     final scanListProvider = Provider.of<ScanListProvider>(context);
     final scans = scanListProvider.scans;

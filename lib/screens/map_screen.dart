@@ -40,7 +40,7 @@ class _MapScreenState extends State<MapScreen> {
                 controller.animateCamera(
                     CameraUpdate.newCameraPosition(initialPosition));
               },
-              icon: Icon(Icons.location_searching))
+              icon: const Icon(Icons.location_searching))
         ],
       ),
       body: GoogleMap(
