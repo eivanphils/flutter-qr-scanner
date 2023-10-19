@@ -65,6 +65,3 @@ Luego el directorio lib
 | widgets   | Contiene todos los  widgets personalizados que se reutilizan en distintas secciones de la app |
 
 
-## Capturas de pantalla
-
-<img src="https://github.com/eivanphils/flutter-xtream-movies/blob/master/assets/screenshoots/1.png" width="200">   
